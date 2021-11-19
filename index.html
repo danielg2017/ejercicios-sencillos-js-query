@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Alguito con JQuery</title>
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+	
+<!--
+1. un semaforo.... que cambie cuando toco un boton.
+
+2. pasar un texto de un input a otro al tocar un boton.
+
+3. Al entrar a un DIV, ponerle un fondo. Al salir... volver al que estaba.
+
+4. Cambiar una imagen por otra cuando paso con el mouse...
+-->
+
+<h1>4 - Cambiame la img</h1>
+<img src="img/img1.jpg" width="100" height="200" id="imagen4">
+
+
+<h1>3 - cambia fondo de div</h1>
+<div id="ejemplo3" class="ej3 fondo1"></div>
+
+
+
+<h1>2 - pasar entre inputs</h1>
+<input type="text" value="" id="visor1">
+<input type="button" value=" --> " id="pasaTexto">
+<input type="text" value="" id="visor2">
+
+
+
+
+<h1>1 - Semaforo</h1>
+
+<div id="semRojo" class="circulo"></div>
+<div id="semAmarillo" class="circulo"></div>
+<div id="semVerde" class="circulo"></div>
+<br/>
+<input type="button" value="Prende Rojo" id="pRojo"> - <input  type="button" value="Apaga Rojo" id="aRojo">
+<br/>
+<input type="button" value="Prende Amarillo" id="pAmarillo"> - <input  type="button" value="Apaga Amarillo" id="aAmarillo">
+<br/>
+<input type="button" value="Prende Verde" id="pVerde"> - <input  type="button" value="Apaga Verde" id="aVerde">
+
+
+
+	<script src="js/jquery.js"></script>
+	<script>
+		$(document).ready( function() {
+
+			$('#pRojo').on('click', fnPrendeRojo);
+			$('#aRojo').on('click', fnApagaRojo);
+			// idem para los otros 2...
+
+			$('#pasaTexto').on('click', fnPasaTexto);
+
+			$('#ejemplo3').on('mouseenter', fnEntroAlDiv);
+			$('#ejemplo3').on('mouseout', fnSalgoDelDiv);
+
+			$('#imagen4').on('mouseenter', fnCambiameLaImagen);
+
+
+
+/* MIS FUNCIONES */
+			function fnCambiameLaImagen() {
+				tengo = $('#imagen4').attr('src');
+				console.log(tengo);
+				if (tengo=='img/img1.jpg') {
+					$('#imagen4').attr('src','img/img2.jpg');
+				} else {
+					$('#imagen4').attr('src','img/img1.jpg');
+				}
+			}
+
+
+			function fnEntroAlDiv() {
+				$('#ejemplo3').removeClass('fondo1').addClass('fondo2');
+			}
+			function fnSalgoDelDiv() {
+				$('#ejemplo3').removeClass('fondo2').addClass('fondo1');
+			}
+
+			function fnPasaTexto() {
+				valor = $('#visor1').val();
+				$('#visor2').val(valor);
+				$('#visor1').val('');
+			}
+
+
+
+			function fnPrendeRojo() {
+				console.log('entro en prender rojo');
+				$('#semRojo').addClass('fRojo');
+
+			}
+			function fnApagaRojo() {
+				$('#semRojo').removeClass('fRojo');
+			}
+
+
+		});
+	</script>
+
+
+</body>
+</html>

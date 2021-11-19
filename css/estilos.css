@@ -1,0 +1,23 @@
+
+
+.circulo {
+	border:  2px solid #000;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+
+.fRojo { background-color: red; }
+.fAmarillo { background-color: yellow; }
+.fVerde { background-color: green; }
+
+
+.ej3 {
+	border:  2px solid #000;
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+}
+
+.fondo1 { background-color: blue; }
+.fondo2 { background-color: orange; }
